@@ -22,7 +22,7 @@ detekt {
             destination = file("$buildDir/reports/detekt/detekt.xml")
         }
         html {
-            enabled = false
+            enabled = true
             destination = file("$buildDir/reports/detekt/detekt.html")
         }
         txt {
