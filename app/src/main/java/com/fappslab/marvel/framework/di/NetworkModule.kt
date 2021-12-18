@@ -1,7 +1,8 @@
 package com.fappslab.marvel.framework.di
 
-import com.fappslab.marvel.framework.network.interceptor.AuthorizationInterceptor
 import com.fappslab.marvel.BuildConfig
+import com.fappslab.marvel.framework.network.MarvelApi
+import com.fappslab.marvel.framework.network.interceptor.AuthorizationInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -56,9 +57,10 @@ object NetworkModule {
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         converterFactory: GsonConverterFactory
-    ): Retrofit = Retrofit.Builder()
+    ): MarvelApi = Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
         .client(okHttpClient)
         .addConverterFactory(converterFactory)
         .build()
+        .create(MarvelApi::class.java)
 }
