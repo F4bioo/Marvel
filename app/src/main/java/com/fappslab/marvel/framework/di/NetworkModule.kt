@@ -1,6 +1,6 @@
 package com.fappslab.marvel.framework.di
 
-import com.fappslab.core.data.network.interceptor.AuthorizationInterceptor
+import com.fappslab.marvel.framework.network.interceptor.AuthorizationInterceptor
 import com.fappslab.marvel.BuildConfig
 import dagger.Module
 import dagger.Provides

@@ -1,4 +1,4 @@
-package com.fappslab.core.data.network.interceptor
+package com.fappslab.marvel.framework.network.interceptor
 
 import okhttp3.Interceptor
 import okhttp3.Response
