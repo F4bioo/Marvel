@@ -33,8 +33,8 @@ object NetworkModule {
     @Provides
     fun provideAuthorizationInterceptor(
     ): AuthorizationInterceptor = AuthorizationInterceptor(
-        privateKey = BuildConfig.PRIVATE_KEY,
         publicKey = BuildConfig.PUBLIC_KEY,
+        privateKey = BuildConfig.PRIVATE_KEY,
         calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
     )
 

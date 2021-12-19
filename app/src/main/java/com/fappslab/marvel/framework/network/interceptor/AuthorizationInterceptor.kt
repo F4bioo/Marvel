@@ -7,8 +7,8 @@ import java.security.MessageDigest
 import java.util.*
 
 class AuthorizationInterceptor(
-    private val privateKey: String,
     private val publicKey: String,
+    private val privateKey: String,
     private val calendar: Calendar
 ) : Interceptor {
 
@@ -42,7 +42,7 @@ class AuthorizationInterceptor(
 
     companion object {
         private const val QUERY_PARAMETER_TS = "ts"
-        private const val QUERY_PARAMETER_API_KEY = "apiKey"
+        private const val QUERY_PARAMETER_API_KEY = "apikey"
         private const val QUERY_PARAMETER_HASH = "hash"
     }
 }

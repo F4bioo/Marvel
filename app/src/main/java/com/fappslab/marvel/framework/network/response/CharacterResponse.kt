@@ -8,8 +8,8 @@ data class CharacterResponse(
     val thumbnail: ThumbnailResponse
 )
 
-fun CharacterResponse.toCharacterModel() =
-    Character(
-        name = this.name,
-        imageUrl = "${this.thumbnail.path}.${this.thumbnail.extension}"
-    )
+fun CharacterResponse.toCharacterModel() = Character(
+    name = this.name,
+    imageUrl = "${this.thumbnail.path}.${this.thumbnail.extension}"
+        .replace("http", "https")
+)
