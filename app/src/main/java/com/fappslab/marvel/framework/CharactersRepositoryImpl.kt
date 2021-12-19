@@ -5,6 +5,7 @@ import com.fappslab.core.data.repository.CharactersRemoteDataSource
 import com.fappslab.core.data.repository.CharactersRepository
 import com.fappslab.core.domain.model.Character
 import com.fappslab.marvel.framework.network.response.DataWrapperResponse
+import com.fappslab.marvel.framework.paging.CharactersPagingSource
 import javax.inject.Inject
 
 class CharactersRepositoryImpl
@@ -14,6 +15,6 @@ constructor(
 ) : CharactersRepository {
 
     override fun getCharacters(query: String): PagingSource<Int, Character> {
-        return CharactesrPaging()
+        return CharactersPagingSource(remoteDataSource, query)
     }
 }
