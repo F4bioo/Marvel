@@ -15,7 +15,7 @@ class CharactersViewHolder(
     private val textName = itemCharacterBinding.textName
     private val imageCharacter = itemCharacterBinding.imageCharacter
 
-    fun binding(character: Character) {
+    fun bind(character: Character) {
         textName.text = character.name
         Glide.with(itemView)
             .load(character.imageUrl)
@@ -27,6 +27,7 @@ class CharactersViewHolder(
         fun create(parent: ViewGroup): CharactersViewHolder {
             val inflater = LayoutInflater.from(parent.context)
             val itemBinding = ItemCharacterBinding.inflate(inflater, parent, false)
+
             return CharactersViewHolder(itemBinding)
         }
     }

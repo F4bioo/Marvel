@@ -4,7 +4,6 @@ package com.fappslab.marvel.presentation.characters
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import com.fappslab.core.domain.model.Character
 
 class CharactersAdapter : PagingDataAdapter<Character, CharactersViewHolder>(diffCallback) {
@@ -14,7 +13,7 @@ class CharactersAdapter : PagingDataAdapter<Character, CharactersViewHolder>(dif
     }
 
     override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
-        getItem(position)?.let { holder.binding(it) }
+        getItem(position)?.let { holder.bind(it) }
     }
 
     companion object {
