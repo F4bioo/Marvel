@@ -13,8 +13,21 @@ def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
+def keyStorePropertiesFile = rootProject.file("keyStore.properties")
+def keyStoreProperties = new Properties()
+keyStoreProperties.load(new FileInputStream(keyStorePropertiesFile))
+
 android {
     compileSdk 31
+
+    signingConfigs {
+        release {
+            storeFile rootProject.file(keyStoreProperties['STORE_FILE'])
+            storePassword keyStoreProperties['STORE_PASSWORD']
+            keyPassword keyStoreProperties['KEY_PASSWORD']
+            keyAlias keyStoreProperties['KEY_ALIAS']
+        }
+    }
 
     defaultConfig {
         applicationId "com.fappslab.marvel"
@@ -31,9 +44,23 @@ android {
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            applicationIdSuffix '.debug'
+        }
+        staging {
+            initWith debug
+            minifyEnabled true
+            applicationIdSuffix '.staging'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro', 'proguard-rules-staging.pro'
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
     compileOptions {
